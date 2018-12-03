@@ -1,4 +1,4 @@
-mrg<p align="center">
+<p align="center">
 <img src="https://perfectdreams.net/assets/img/perfectdreams_logo.png">
 <br>
 <a href="https://perfectdreams.net/"><img src="https://perfectdreams.net/assets/img/perfectdreams_badge.png?v2"></a>
