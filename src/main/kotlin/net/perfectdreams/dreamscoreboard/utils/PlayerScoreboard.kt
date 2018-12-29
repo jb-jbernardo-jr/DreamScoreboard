@@ -255,8 +255,8 @@ class PlayerScoreboard(val player: Player) {
 			val suffix = ""
 
 			var teamName = player.name
-			if (teamName.length > 15) {
-				teamName = teamName.substring(0, 15)
+			if (teamName.length > 14) {
+				teamName = teamName.substring(0, 14)
 			}
 			teamName = teamPrefix + teamName
 			val t = phoenix.scoreboard.getTeam(teamName) ?: phoenix.scoreboard.registerNewTeam(teamName)
