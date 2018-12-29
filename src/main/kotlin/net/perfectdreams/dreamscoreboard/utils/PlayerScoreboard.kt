@@ -250,13 +250,13 @@ class PlayerScoreboard(val player: Player) {
 				player.hasPermission("group.admin") -> "1"
 				player.hasPermission("group.moderador") -> "2"
 				player.hasPermission("group.suporte") -> "3"
-				else -> "§f"
+				else -> "9"
 			}
 			val suffix = ""
 
 			var teamName = player.name
-			if (teamName.length > 14) {
-				teamName = teamName.substring(0, 14)
+			if (teamName.length > 16) {
+				teamName = teamName.substring(0, 15)
 			}
 			teamName = teamPrefix + teamName
 			val t = phoenix.scoreboard.getTeam(teamName) ?: phoenix.scoreboard.registerNewTeam(teamName)
