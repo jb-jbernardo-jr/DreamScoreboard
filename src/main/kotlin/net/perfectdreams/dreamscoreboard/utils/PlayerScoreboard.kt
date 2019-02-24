@@ -243,6 +243,9 @@ class PlayerScoreboard(val player: Player) {
 				player.hasPermission("group.admin") -> "§4§l"
 				player.hasPermission("group.moderador") -> "§9§l"
 				player.hasPermission("group.suporte") -> "§6§l"
+				player.hasPermission("group.vip++") -> "§b"
+				player.hasPermission("group.vip+") -> "§b"
+				player.hasPermission("group.vip") -> "§b"
 				else -> "§f"
 			}
 			val teamPrefix = when {
@@ -250,6 +253,9 @@ class PlayerScoreboard(val player: Player) {
 				player.hasPermission("group.admin") -> "1"
 				player.hasPermission("group.moderador") -> "2"
 				player.hasPermission("group.suporte") -> "3"
+				player.hasPermission("group.vip++") -> "4"
+				player.hasPermission("group.vip+") -> "5"
+				player.hasPermission("group.vip") -> "6"
 				else -> "9"
 			}
 			val suffix = ""
