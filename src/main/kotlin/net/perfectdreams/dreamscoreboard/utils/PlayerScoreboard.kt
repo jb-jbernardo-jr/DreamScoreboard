@@ -265,12 +265,10 @@ class PlayerScoreboard(val player: Player) {
 				teamName = teamName.substring(0, 14)
 			}
 			teamName = teamPrefix + teamName
-			val t = mainScoreboard.getTeam(teamName) ?: mainScoreboard.registerNewTeam(teamName)
+			val t = phoenix.scoreboard.getTeam(teamName) ?: phoenix.scoreboard.registerNewTeam(teamName)
 			t.prefix = prefix
 			t.suffix = suffix
-			if (!t.players.contains(player)) {
-				t.addPlayer(player)
-			}
+			t.entries.add(player.name)
 		}
 	}
 }
