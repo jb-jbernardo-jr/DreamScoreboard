@@ -258,13 +258,13 @@ class PlayerScoreboard(val player: Player) {
 				else -> "9"
 			}
 			val suffix = when {
-				player.hasPermission("group.dono") -> " 閌"
-				player.hasPermission("group.admin") -> " 閌"
-				player.hasPermission("group.moderador") -> " 閌"
-				player.hasPermission("group.suporte") -> " 閌"
-				player.hasPermission("group.vip++") -> " 娀"
-				player.hasPermission("group.vip+") -> " 閍"
-				player.hasPermission("group.vip") -> " 锈"
+				player.hasPermission("group.dono") -> " §f閌"
+				player.hasPermission("group.admin") -> " §f閌"
+				player.hasPermission("group.moderador") -> " §f閌"
+				player.hasPermission("group.suporte") -> " §f閌"
+				player.hasPermission("group.vip++") -> " §f娀"
+				player.hasPermission("group.vip+") -> " §f閍"
+				player.hasPermission("group.vip") -> " §f锈"
 				else -> "§f"
 			}
 

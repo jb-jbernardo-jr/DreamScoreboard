@@ -5,6 +5,7 @@ import com.okkero.skedule.schedule
 import net.perfectdreams.dreamcore.utils.KotlinPlugin
 import net.perfectdreams.dreamcore.utils.registerEvents
 import net.perfectdreams.dreamcore.utils.scheduler
+import net.perfectdreams.dreamscoreboard.commands.GlowingCommand
 import net.perfectdreams.dreamscoreboard.utils.PlayerScoreboard
 import org.bukkit.entity.Player
 import org.bukkit.event.EventHandler
@@ -24,6 +25,8 @@ class DreamScoreboard : KotlinPlugin(), Listener {
 		super.softEnable()
 		registerEvents(this)
 
+		registerCommand(GlowingCommand())
+		
 		scheduler().schedule(this, SynchronizationContext.ASYNC) {
 			while (true) {
 				CURRENT_TICK++
