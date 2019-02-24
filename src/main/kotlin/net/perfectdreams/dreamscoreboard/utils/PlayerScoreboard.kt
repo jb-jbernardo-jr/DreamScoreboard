@@ -222,9 +222,7 @@ class PlayerScoreboard(val player: Player) {
 	}
 
 	private fun setupTeams() {
-		player.scoreboard = phoenix.scoreboard
-
-		val mainScoreboard = Bukkit.getScoreboardManager().mainScoreboard
+		/* val mainScoreboard = Bukkit.getScoreboardManager().mainScoreboard
 
 		for (team in mainScoreboard.teams) {
 			val t = phoenix.scoreboard.getTeam(team.name) ?: phoenix.scoreboard.registerNewTeam(team.name)
@@ -235,7 +233,7 @@ class PlayerScoreboard(val player: Player) {
 			for (player in team.players) {
 				t.addPlayer(player)
 			}
-		}
+		} */
 
 		for (player in Bukkit.getOnlinePlayers()) {
 			val prefix = when {
@@ -270,5 +268,7 @@ class PlayerScoreboard(val player: Player) {
 			t.suffix = suffix
 			t.addEntry(player.name)
 		}
+
+		player.scoreboard = phoenix.scoreboard
 	}
 }
