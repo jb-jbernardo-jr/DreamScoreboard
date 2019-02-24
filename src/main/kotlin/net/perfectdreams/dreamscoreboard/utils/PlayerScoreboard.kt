@@ -289,7 +289,7 @@ class PlayerScoreboard(val player: Player) {
 				else -> ChatColor.WHITE
 			}
 
-			if (t.hasPlayer(player))
+			if (!t.hasPlayer(player))
 				t.addPlayer(player)
 		}
 
