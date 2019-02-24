@@ -268,7 +268,7 @@ class PlayerScoreboard(val player: Player) {
 			val t = phoenix.scoreboard.getTeam(teamName) ?: phoenix.scoreboard.registerNewTeam(teamName)
 			t.prefix = prefix
 			t.suffix = suffix
-			t.entries.add(player.name)
+			t.addEntry(player.name)
 		}
 	}
 }
