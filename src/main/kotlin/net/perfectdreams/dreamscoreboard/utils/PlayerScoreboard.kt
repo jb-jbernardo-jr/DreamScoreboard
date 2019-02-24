@@ -7,6 +7,7 @@ import net.perfectdreams.dreamcore.utils.onlinePlayers
 import net.perfectdreams.dreamscoreboard.DreamScoreboard
 import net.perfectdreams.dreamvote.DreamVote
 import org.bukkit.Bukkit
+import org.bukkit.ChatColor
 import org.bukkit.entity.Player
 import org.bukkit.scoreboard.DisplaySlot
 import java.text.DecimalFormat
@@ -237,13 +238,13 @@ class PlayerScoreboard(val player: Player) {
 
 		for (player in Bukkit.getOnlinePlayers()) {
 			val prefix = when {
-				player.hasPermission("group.dono") -> "§a§l"
-				player.hasPermission("group.admin") -> "§4§l"
-				player.hasPermission("group.moderador") -> "§9§l"
-				player.hasPermission("group.suporte") -> "§6§l"
-				player.hasPermission("group.vip++") -> "§b"
-				player.hasPermission("group.vip+") -> "§b"
-				player.hasPermission("group.vip") -> "§b"
+				player.hasPermission("group.dono") -> "§a§l[Dono] "
+				player.hasPermission("group.admin") -> "§4§l[Admin] "
+				player.hasPermission("group.moderador") -> "§9§l[Moderador] "
+				player.hasPermission("group.suporte") -> "§6§l[Suporte] "
+				player.hasPermission("group.vip++") -> "§b[VIP§6++§b] "
+				player.hasPermission("group.vip+") -> "§b[VIP§6+§b] "
+				player.hasPermission("group.vip") -> "§b[VIP§b]"
 				else -> "§f"
 			}
 			val teamPrefix = when {
@@ -256,17 +257,40 @@ class PlayerScoreboard(val player: Player) {
 				player.hasPermission("group.vip") -> "6"
 				else -> "9"
 			}
-			val suffix = ""
+			val suffix = when {
+				player.hasPermission("group.dono") -> " 閌"
+				player.hasPermission("group.admin") -> " 閌"
+				player.hasPermission("group.moderador") -> " 閌"
+				player.hasPermission("group.suporte") -> " 閌"
+				player.hasPermission("group.vip++") -> " 娀"
+				player.hasPermission("group.vip+") -> " 閍"
+				player.hasPermission("group.vip") -> " 锈"
+				else -> "§f"
+			}
 
 			var teamName = player.name
 			if (teamName.length > 15) {
 				teamName = teamName.substring(0, 14)
 			}
+
 			teamName = teamPrefix + teamName
 			val t = phoenix.scoreboard.getTeam(teamName) ?: phoenix.scoreboard.registerNewTeam(teamName)
 			t.prefix = prefix
 			t.suffix = suffix
-			t.addEntry(player.name)
+
+			t.color = when {
+				player.hasPermission("group.dono") -> ChatColor.GREEN
+				player.hasPermission("group.admin") -> ChatColor.RED
+				player.hasPermission("group.moderador") -> ChatColor.DARK_AQUA
+				player.hasPermission("group.suporte") -> ChatColor.GOLD
+				player.hasPermission("group.vip++") -> ChatColor.AQUA
+				player.hasPermission("group.vip+") -> ChatColor.AQUA
+				player.hasPermission("group.vip") -> ChatColor.AQUA
+				else -> ChatColor.WHITE
+			}
+
+			if (t.hasPlayer(player))
+				t.addPlayer(player)
 		}
 
 		player.scoreboard = phoenix.scoreboard
