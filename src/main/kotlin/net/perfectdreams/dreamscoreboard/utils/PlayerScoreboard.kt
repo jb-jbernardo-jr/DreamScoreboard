@@ -39,15 +39,15 @@ class PlayerScoreboard(val m: DreamScoreboard, val player: Player) {
 		setupTeams()
 
 		player.setPlayerListHeaderFooter(
-				"""§4||§c|§f|§b|§3|| §6»»§e»»§f»» §8§l[ §4§lSparkly§b§lPower §8§] §f««§e««§6«« §4||§c|§f|§b|§3||
+				"""§4§k||§c§k|§f§k|§b§k|§3§k|| §6»»§e»»§f»» §8§l[ §4§lSparkly§b§lPower §8§l] §f««§e««§6«« §4§k||§c§k|§f§k|§b§k|§3§k||
     |§3§omc.sparklypower.net
-    |§3§m🟆-§b§m-§3§m-§b§m-§3§m-§b§m-§3§m-§b§m-§3§m-§b§m-§3§m-§b§m-§3§m-§b§m-§3§m-§b§m-§3§m-§b§m-§3§m-§b§m-§3§m-§b§m-§3§m-§3§m-🟆
+    |§3§m✦-§b§m-§3§m-§b§m-§3§m-§b§m-§3§m-§b§m-§3§m-§b§m-§3§m-§b§m-§3§m-§b§m-§3§m-§b§m-§3§m-§b§m-§3§m-§b§m-§3§m-§b§m-§3§m-§3§m-✦
     |§e§lSeja bem-vind${player.artigo} ${player.displayName}§e§l!
     |§6Modéstia à parte... esse servidor é incrível!
-    |§8§m-§3§m-§b§m-§f§m-§b§m-§3§m-§8§m
+    |§8§m-§3§m-§b§m-§f§m-§b§m-§3§m-§8§m-
     |§6§lPrecisa de ajuda? §e/ajuda
     |§6§lAlguma dúvida? §6§oPergunte no chat!
-    |§8§m-§3§m-§b§m-§f§m-§b§m-§3§m-§8§m
+    |§8§m-§3§m-§b§m-§f§m-§b§m-§3§m-§8§m-
 """.trimMargin(),
 				"""§8§m-§3§m-§b§m-§f§m-§b§m-§3§m-§8§m
     |§f锈 §bQuer ajudar o servidor? Então compre VIP! §f锈
@@ -57,9 +57,10 @@ class PlayerScoreboard(val m: DreamScoreboard, val player: Player) {
     |§3https://sparklypower.net/votar
     |
     |§f閌 §7SparklyPower é o servidor oficial da Loritta Morenitta! • https://loritta.website/ §f閌
+    |
     |§7Lembre-se... você é incrível, continue sendo uma pessoa maravilhosa e ajude a
     |§7transformar o mundo em um lugar melhor!
-    |§3§m🟆-§b§m-§3§m-§b§m-§3§m-§b§m-§3§m-§b§m-§3§m-§b§m-§3§m-§b§m-§3§m-§b§m-§3§m-§b§m-§3§m-§b§m-§3§m-§b§m-§3§m-§b§m-§3§m-§3§m-🟆
+    |§3§m✦-§b§m-§3§m-§b§m-§3§m-§b§m-§3§m-§b§m-§3§m-§b§m-§3§m-§b§m-§3§m-§b§m-§3§m-§b§m-§3§m-§b§m-§3§m-§b§m-§3§m-§b§m-§3§m-§3§m-✦
 """.trimMargin()
 		)
 
@@ -311,7 +312,7 @@ class PlayerScoreboard(val m: DreamScoreboard, val player: Player) {
 
 			t.color = when {
 				m.coloredGlow.contains(player.uniqueId) -> m.coloredGlow[player.uniqueId]
-				player.hasPermission("group.dono") -> ChatColor.GREEN
+				player.hasPermission("group.dono") -> ChatColor.DARK_GREEN
 				player.hasPermission("group.admin") -> ChatColor.RED
 				player.hasPermission("group.moderador") -> ChatColor.DARK_AQUA
 				player.hasPermission("group.suporte") -> ChatColor.GOLD
