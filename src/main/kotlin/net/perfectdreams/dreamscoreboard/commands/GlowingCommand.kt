@@ -65,7 +65,7 @@ class GlowingCommand(val m: DreamScoreboard) : SparklyCommand(arrayOf("glowing",
         AQUA("azul água claro", ChatColor.AQUA, false),
         RED("vermelho claro", ChatColor.RED, true),
         LIGHT_PURPLE("azul", ChatColor.LIGHT_PURPLE, false),
-        YELLOW("yellow", ChatColor.YELLOW, true),
-        WHITE("white", ChatColor.WHITE, false)
+        YELLOW("amarelo", ChatColor.YELLOW, true),
+        WHITE("branco", ChatColor.WHITE, false)
     }
 }
