@@ -3,6 +3,7 @@ package net.perfectdreams.dreamscoreboard.utils
 import net.perfectdreams.dreamcore.DreamCore
 import net.perfectdreams.dreamcore.utils.PhoenixScoreboard
 import net.perfectdreams.dreamcore.utils.balance
+import net.perfectdreams.dreamcore.utils.extensions.artigo
 import net.perfectdreams.dreamcore.utils.onlinePlayers
 import net.perfectdreams.dreamscoreboard.DreamScoreboard
 import net.perfectdreams.dreamvote.DreamVote
@@ -14,16 +15,21 @@ import java.text.DecimalFormat
 import java.util.*
 import java.util.concurrent.TimeUnit
 
-class PlayerScoreboard(val player: Player) {
+class PlayerScoreboard(val m: DreamScoreboard, val player: Player) {
 	val phoenix: PhoenixScoreboard = PhoenixScoreboard()
 	var lastIndex = 15
+	var randomEmote = "?"
+
 	init {
 		phoenix.setTitle("§4§lSparkly§b§lPower")
 		player.scoreboard = phoenix.scoreboard
 	}
 
 	fun updateScoreboard() {
-		phoenix.setTitle("§6✪ §4§lSparkly§b§lPower §6✪")
+		if (DreamScoreboard.CURRENT_TICK == 0)
+			randomEmote = DreamScoreboard.EMOTES.random()
+
+		phoenix.setTitle("§6✪ §r$randomEmote §4§lSparkly§b§lPower §r$randomEmote §6✪")
 
 		if (phoenix.scoreboard.getObjective("health") == null) {
 			val healthObj = phoenix.scoreboard.registerNewObjective("health", "health")
@@ -31,6 +37,31 @@ class PlayerScoreboard(val player: Player) {
 		}
 
 		setupTeams()
+
+		player.setPlayerListHeaderFooter(
+				"""§4||§c|§f|§b|§3|| §6»»§e»»§f»» §8§l[ §4§lSparkly§b§lPower §8§] §f««§e««§6«« §4||§c|§f|§b|§3||
+    |§3§omc.sparklypower.net
+    |§3§m🟆-§b§m-§3§m-§b§m-§3§m-§b§m-§3§m-§b§m-§3§m-§b§m-§3§m-§b§m-§3§m-§b§m-§3§m-§b§m-§3§m-§b§m-§3§m-§b§m-§3§m-§b§m-§3§m-§3§m-🟆
+    |§e§lSeja bem-vind${player.artigo} ${player.displayName}§e§l!
+    |§6Modéstia à parte... esse servidor é incrível!
+    |§8§m-§3§m-§b§m-§f§m-§b§m-§3§m-§8§m
+    |§6§lPrecisa de ajuda? §e/ajuda
+    |§6§lAlguma dúvida? §6§oPergunte no chat!
+    |§8§m-§3§m-§b§m-§f§m-§b§m-§3§m-§8§m
+""".trimMargin(),
+				"""§8§m-§3§m-§b§m-§f§m-§b§m-§3§m-§8§m
+    |§f锈 §bQuer ajudar o servidor? Então compre VIP! §f锈
+    |§3https://sparklypower.net/loja
+    |
+    |§f閍 §bVote no servidor para receber recompensas incríveis! §f閍
+    |§3https://sparklypower.net/votar
+    |
+    |§f閌 §7SparklyPower é o servidor oficial da Loritta Morenitta! • https://loritta.website/ §f閌
+    |§7Lembre-se... você é incrível, continue sendo uma pessoa maravilhosa e ajude a
+    |§7transformar o mundo em um lugar melhor!
+    |§3§m🟆-§b§m-§3§m-§b§m-§3§m-§b§m-§3§m-§b§m-§3§m-§b§m-§3§m-§b§m-§3§m-§b§m-§3§m-§b§m-§3§m-§b§m-§3§m-§b§m-§3§m-§b§m-§3§m-§3§m-🟆
+""".trimMargin()
+		)
 
 		var idx = 15
 
@@ -279,6 +310,7 @@ class PlayerScoreboard(val player: Player) {
 			t.suffix = suffix
 
 			t.color = when {
+				m.coloredGlow.contains(player.uniqueId) -> m.coloredGlow[player.uniqueId]
 				player.hasPermission("group.dono") -> ChatColor.GREEN
 				player.hasPermission("group.admin") -> ChatColor.RED
 				player.hasPermission("group.moderador") -> ChatColor.DARK_AQUA
