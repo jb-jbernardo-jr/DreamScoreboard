@@ -41,7 +41,7 @@ class PlayerScoreboard(val m: DreamScoreboard, val player: Player) {
 		player.setPlayerListHeaderFooter(
 				"""§4§k||§c§k|§f§k|§b§k|§3§k|| §6»»§e»»§f»» §8§l[ §4§lSparkly§b§lPower §8§l] §f««§e««§6«« §4§k||§c§k|§f§k|§b§k|§3§k||
     |§3§omc.sparklypower.net
-    |§3§m✦-§b§m-§3§m-§b§m-§3§m-§b§m-§3§m-§b§m-§3§m-§b§m-§3§m-§b§m-§3§m-§b§m-§3§m-§b§m-§3§m-§b§m-§3§m-§b§m-§3§m-§b§m-§3§m-§3§m-✦
+    |§3§m✦-§b§m-§3§m-§b§m-§3§m-§b§m-§3§m-§b§m-§3§m-§b§m-§3§m-§b§m-§3§m-§b§m-§3§m-§b§m-§3§m-§b§m-§3§m-§b§m-§3§m-§b§m-§3§m-✦
     |§e§lSeja bem-vind${player.artigo} ${player.displayName}§e§l!
     |§6Modéstia à parte... esse servidor é incrível!
     |§8§m-§3§m-§b§m-§f§m-§b§m-§3§m-§8§m-
@@ -60,7 +60,7 @@ class PlayerScoreboard(val m: DreamScoreboard, val player: Player) {
     |
     |§7Lembre-se... você é incrível, continue sendo uma pessoa maravilhosa e ajude a
     |§7transformar o mundo em um lugar melhor!
-    |§3§m✦-§b§m-§3§m-§b§m-§3§m-§b§m-§3§m-§b§m-§3§m-§b§m-§3§m-§b§m-§3§m-§b§m-§3§m-§b§m-§3§m-§b§m-§3§m-§b§m-§3§m-§b§m-§3§m-§3§m-✦
+    |§3§m✦-§b§m-§3§m-§b§m-§3§m-§b§m-§3§m-§b§m-§3§m-§b§m-§3§m-§b§m-§3§m-§b§m-§3§m-§b§m-§3§m-§b§m-§3§m-§b§m-§3§m-§b§m-§3§m-✦
 """.trimMargin()
 		)
 
@@ -310,9 +310,15 @@ class PlayerScoreboard(val m: DreamScoreboard, val player: Player) {
 			t.prefix = prefix
 			t.suffix = suffix
 
+			if (player.name == "MrPowerGamerBR" && this.player.name == "MrPowerGamerBR") {
+				player.sendMessage("Tamanho é ${m.coloredGlow.size}")
+				player.sendMessage("Contém? ${m.coloredGlow.contains(player.uniqueId)}")
+				player.sendMessage("Valor é ${m.coloredGlow[player.uniqueId]}")
+			}
+
 			t.color = when {
 				m.coloredGlow.contains(player.uniqueId) -> m.coloredGlow[player.uniqueId]
-				player.hasPermission("group.dono") -> ChatColor.DARK_GREEN
+				player.hasPermission("group.dono") -> ChatColor.GREEN
 				player.hasPermission("group.admin") -> ChatColor.RED
 				player.hasPermission("group.moderador") -> ChatColor.DARK_AQUA
 				player.hasPermission("group.suporte") -> ChatColor.GOLD
