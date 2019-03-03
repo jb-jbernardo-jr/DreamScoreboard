@@ -310,14 +310,8 @@ class PlayerScoreboard(val m: DreamScoreboard, val player: Player) {
 			t.prefix = prefix
 			t.suffix = suffix
 
-			if (player.name == "MrPowerGamerBR" && this.player.name == "MrPowerGamerBR") {
-				player.sendMessage("Tamanho é ${m.coloredGlow.size}")
-				player.sendMessage("Contém? ${m.coloredGlow.contains(player.uniqueId)}")
-				player.sendMessage("Valor é ${m.coloredGlow[player.uniqueId]}")
-			}
-
 			t.color = when {
-				m.coloredGlow.contains(player.uniqueId) -> m.coloredGlow[player.uniqueId]
+				m.coloredGlow.containsKey(player.uniqueId) -> m.coloredGlow[player.uniqueId]
 				player.hasPermission("group.dono") -> ChatColor.GREEN
 				player.hasPermission("group.admin") -> ChatColor.RED
 				player.hasPermission("group.moderador") -> ChatColor.DARK_AQUA
